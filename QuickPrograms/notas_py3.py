@@ -25,7 +25,8 @@ menuPrinc ="""
     3. Nota final por estudiante
     4. Nota final todos registrados
     5. Guardar cambios
-    0. Salir"""
+    0. Salir
+    """
 
 menuEditEst ="""
     Editar:
@@ -166,7 +167,3 @@ while True:
     else:
         print('\nSeleccion incorrecta, intente denuevo\n')
         continue
-    
-    
-    
-
