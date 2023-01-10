@@ -1,18 +1,24 @@
-import csv
+#-----------------------------------------------------------
+# PROGRAMA PARA CALCULAR PROMEDIO DE 3 NOTAS
+#-----------------------------------------------------------
 
-file = "names.csv" # Nombre del archivo contenedor de las notas
 
-with open(file, 'r') as data: # creamos la lista de directorios
-	reader = csv.DictReader(data)
-	name_list = list(reader)
 
-for i in range(len(name_list)): # convertimos las notas a float para operar en el programa
-    name_list[i]['n1'] = float(name_list[i]['n1'])
+import csv          # importamos el modulo para csv files con todos sus metodos
+
+file = "names.csv"  # ubicacion/nombre del archivo que contiene las notas
+
+with open(file, 'r') as data:       # abrimos el archivo para lectura 'r'
+	reader = csv.DictReader(data)   # Leemos datos del archivo
+	name_list = list(reader)        # creamos la lista con el contenido del archivo
+    
+for i in range(len(name_list)):                             # Loop para convertir datos
+    name_list[i]['n1'] = float(name_list[i]['n1'])          # Convertir de str() a float()
     name_list[i]['n2'] = float(name_list[i]['n2'])
     name_list[i]['n3'] = float(name_list[i]['n3'])
     name_list[i]['score'] = float(name_list[i]['score'])
 
-headers = ['ID','name','n1','n2','n3','score']
+headers = ['ID','name','n1','n2','n3','score']              # 
 
 menuPrinc ="""
     #######################
@@ -84,7 +90,7 @@ def editEst():
             if sel3 == 0:
                 break
             elif sel3 == 1:
-                name = input("Ingrese nuevo nombre: ")
+                name = raw_input("Ingrese nuevo nombre: ")
                 name_list[sel2-1]['name'] = name
                 print(name_list[sel2-1])
             elif sel3 == 2:
@@ -121,8 +127,7 @@ def notaFinalEst():
 def notaFinal():
     for i in range(len(name_list)):
         name_list[i]['score'] = (name_list[i]['n1'] + name_list[i]['n2'] + name_list[i]['n3'])/3
-        print(name_list[i]['name'],end="\t--->\t")
-        print("{:.1f}".format(name_list[i]['score']))
+        print("{0}\t--->\t{1:.1f}".format(name_list[i]['name'],name_list[i]['score']))
     return
 
 def saveChg(name_list):
@@ -140,7 +145,7 @@ def saveChg(name_list):
 while True:
     print (menuPrinc)
 
-    sel1 = input("\nSeleccion: ")
+    sel1 = raw_input("\nSeleccion: ")
 
     if sel1 == "0" or sel1 == "1" or sel1 == "2" or sel1 == "3" or sel1 == "4" or sel1 == "5":
         sel1 = int(sel1)
@@ -159,7 +164,7 @@ while True:
     elif sel1 == 5:
         saveChg(name_list)
     elif sel1 == 0:
-        confirm = input("Seguro que desea salir? Y/N: ")
+        confirm = raw_input("Seguro que desea salir? Y/N: ")
         if confirm == "Y" or confirm == "y":
             print('\nBye!')
             break
