@@ -46,7 +46,7 @@ default(){
     
     sed -e '/PS1=/c\' -e "PS1=\"[\\\u@\\\h \\\W]$ \"" $HOME/.bashrc > $HOME/MODIFIED_.bashrc
     mv $HOME/MODIFIED_.bashrc $HOME/.bashrc
-    exec $SHELL
+    source $HOME/.bashrc
     # cp $HOME/ORIGINAL_.bashrc $HOME/.bashrc
     echo "Backup restored"
     exit 1;
@@ -91,7 +91,7 @@ edit(){
             fi
             # chmod 666 $HOME/*.bashrc
             mv $HOME/MODIFIED_.bashrc $HOME/.bashrc   # rename MOFIFIED_.bashrc to .bashrc
-            exec $SHELL
+            source $HOME/.bashrc
             exit 1
         else
             echo "No changes made"
