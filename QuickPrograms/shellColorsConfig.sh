@@ -84,9 +84,9 @@ edit(){
         echo $USER $HOST $xPATH
         if [ $CONFIRM = "Y" -o $CONFIRM = "y" ] ; then
             if grep -q "PS1=" $HOME/.bashrc ; then
-                sed -e '/PS1=/c\' -e "PS1=\"${USER}[\\\u${HOST}@\\\h ${xPATH}\\\w]${HOST}$ ${colors[RESET]}\"" $HOME/.bashrc > $HOME/MODIFIED_.bashrc     # add PS1 line with desired colors inside the profile bash
+                sed -e '/PS1=/c\' -e "PS1=\"\\\[${USER}\\\]\\\u\\\[${HOST}\\\]@\\\h:\\\[${xPATH}\\\] \\\w \\\[${HOST}\\\]$ \\\[${colors[RESET]}\\\]\"" $HOME/.bashrc > $HOME/MODIFIED_.bashrc     # add PS1 line with desired colors inside the profile bash
             else
-                sed -e '/# User specific aliases and functions/a\' -e "PS1=\"${USER}[\\\u${HOST}@\\\h ${xPATH}\\\w]${HOST}$ ${colors[RESET]}\"" $HOME/.bashrc > $HOME/MODIFIED_.bashrc     # add PS1 line with desired colors inside the profile bash
+                sed -e '/# User specific aliases and functions/a\' -e "PS1=\"\\\[${USER}\\\]\\\u\\\[${HOST}\\\]@\\\h:\\\[${xPATH}\\\] \\\w \\\[${HOST}\\\]$ \\\[${colors[RESET]}\\\]\"" $HOME/.bashrc > $HOME/MODIFIED_.bashrc     # add PS1 line with desired colors inside the profile bash
                 # export PS1="${2}[\u${3}@\h ${4}\W]${3}$ ${RESET}"
             fi
             # chmod 666 $HOME/*.bashrc
